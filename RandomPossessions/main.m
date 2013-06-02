@@ -7,16 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BNRItem.h"
 
 int main(int argc, const char * argv[])
 {
 
-    @autoreleasepool {
-        
-        // insert code here...
-        NSLog(@"Hello, World!");
-        
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < 10; i++) {
+        BNRItem *p = [BNRItem randomItem];
+        [items addObject:p];
     }
-    return 0;
+    
+    for (BNRItem *item in items) {
+        NSLog(@"%@", item);
+    }
+
+    items = nil;
 }
 
