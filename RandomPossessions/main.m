@@ -14,15 +14,18 @@ int main(int argc, const char * argv[])
 
     NSMutableArray *items = [[NSMutableArray alloc] init];
     
+    BNRContainer *container;
+    
     for (int i = 0; i < 10; i++) {
         BNRItem *p = [BNRItem randomItem];
         [items addObject:p];
+        [container addSubItem:p];
     }
     
     for (BNRItem *item in items) {
         NSLog(@"%@", item);
     }
-
+    
     items = nil;
 }
 
