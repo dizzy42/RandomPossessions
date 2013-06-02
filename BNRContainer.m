@@ -12,22 +12,25 @@
 
 - (void)addSubItem:(id *)item
 {
-    [subitems addObject:item];
+    [subitems addObject:*item];
 }
 
 - (NSString *)description
 {
+    NSMutableString *subitemDescriptions;
     int totalValueInDollars = valueInDollars;
     for (BNRItem *subitem in subitems)
     {
+        [subitemDescriptions appendString:[subitem description]];
         totalValueInDollars += [subitem valueInDollars];
     }
     
-    NSString *descriptionString = [[NSString alloc] initWithFormat:@"%@ (%@): Worth $%d, recorded on %@",
+    NSString *descriptionString = [[NSString alloc] initWithFormat:@"%@ (%@): Worth $%d, recorded on %@ \n %@",
                                    itemName,
                                    serialNumber,
                                    totalValueInDollars,
-                                   dateCreated];
+                                   dateCreated,
+                                   subitemDescriptions];
     return descriptionString;
 }
 @end
